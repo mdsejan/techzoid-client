@@ -1,7 +1,7 @@
 const Banner = () => {
   return (
     <div
-      className=" w-full bg-cover bg-center h-[60vh]"
+      className=" w-full bg-cover bg-center h-[20vh] lg:h-[60vh] rounded-2xl"
       style={{
         backgroundImage: "url(https://i.ibb.co/4RJXhLP/samsung-banner3.png)",
       }}
