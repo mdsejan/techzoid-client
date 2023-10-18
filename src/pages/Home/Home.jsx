@@ -1,4 +1,3 @@
-import Footer from "../Shared/Footer";
 import Banner from "./Banner";
 import Brands from "./Brands";
 
@@ -10,7 +9,6 @@ const Home = () => {
         <Brands></Brands>
         <div className="min-h-[50vh]"></div>
       </div>
-      <Footer></Footer>
     </div>
   );
 };
