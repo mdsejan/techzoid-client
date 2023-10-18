@@ -4,7 +4,7 @@ const BrandCard = ({ brand }) => {
   const { image, name } = brand;
   return (
     <div className="flex flex-col bg-base-100 border shadow rounded-lg">
-      <figure className="flex items-center h-28 lg:h-36">
+      <figure className="flex items-center h-28 lg:h-36 pt-4">
         <img
           className="w-full object-cover rounded-t-lg"
           src={image}
