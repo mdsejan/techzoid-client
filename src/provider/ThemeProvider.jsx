@@ -5,6 +5,7 @@ export const ThemeContext = createContext(null);
 
 const ThemeProvider = ({ children }) => {
   const [brands, setBrands] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     fetch("https://techzoid-server.vercel.app/brands")
@@ -12,7 +13,17 @@ const ThemeProvider = ({ children }) => {
       .then((data) => setBrands(data));
   }, []);
 
-  const themeInfo = { brands };
+  useEffect(() => {
+    fetch("https://techzoid-server.vercel.app/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
+  const themeInfo = {
+    brands,
+    products,
+  };
+
   return (
     <ThemeContext.Provider value={themeInfo}>{children}</ThemeContext.Provider>
   );
