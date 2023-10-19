@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { ThemeContext } from "../../provider/ThemeProvider";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
+
+  const { user, logOut } = useContext(ThemeContext);
+
+  const handleLogOut = () => {
+    logOut().then();
+  };
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -117,25 +124,47 @@ const Navbar = () => {
             </label>
           </div>
           <div className="dropdown dropdown-end">
-            <div className="flex items-center">
-              <h2 className="mr-4 hidden md:inline-block">Name</h2>
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src="https://i.ibb.co/Sw3GfGJ/user.png" />
+            {user ? (
+              <>
+                <div className="flex items-center">
+                  <h2 className="mr-4 hidden md:inline-block">
+                    {user.displayName}
+                  </h2>
+                  <label
+                    tabIndex={0}
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img
+                        src={
+                          user.photoURL
+                            ? user.photoURL
+                            : "https://i.ibb.co/Sw3GfGJ/user.png"
+                        }
+                      />
+                    </div>
+                  </label>
                 </div>
-              </label>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40"
-            >
-              <li>
-                <h2 className="mr-4 md:hidden">Name</h2>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40"
+                >
+                  <li>
+                    <h2 className="mr-4 md:hidden">Name</h2>
+                  </li>
+                  <li>
+                    <button onClick={handleLogOut}>Logout</button>
+                  </li>
+                </ul>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="px-4 py-2 border text-[#F7C54C] border-[#F7C54C] hover:bg-[#F7C54C] hover:text-white"
+              >
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>

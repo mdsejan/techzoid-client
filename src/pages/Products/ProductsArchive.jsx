@@ -22,9 +22,15 @@ const ProductsArchive = () => {
         <h2 className="text-3xl">Products</h2>
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-5">
-        {brandProducts.map((product) => (
-          <ProductCard key={product._id} product={product}></ProductCard>
-        ))}
+        {brandProducts.length === 0 ? (
+          <h3 className="text-xl px-2 bg-[#F7C54C] inline-block">
+            No Products Found
+          </h3>
+        ) : (
+          brandProducts.map((product) => (
+            <ProductCard key={product._id} product={product}></ProductCard>
+          ))
+        )}
       </div>
     </div>
   );
