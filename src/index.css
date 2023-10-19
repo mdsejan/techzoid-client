@@ -22,6 +22,21 @@ a.active {
   font-weight: 700;
 }
 
+/* ==== Dark Mode Style ==== */
+
 [data-theme="dark"] .dark-bg-black {
   background-color: black;
+}
+
+/*======== Swiper ===== */
+
+.swiper-pagination-bullet {
+  width: 0.6rem !important;
+  height: 0.6rem !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #f7c359 !important;
+  width: 0.6rem !important;
+  height: 0.6rem !important;
 }
