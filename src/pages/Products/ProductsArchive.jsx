@@ -1,26 +1,30 @@
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
-import { ThemeContext } from "../../provider/ThemeProvider";
+import { useEffect, useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
 
 const ProductsArchive = () => {
-  const { brandId } = useParams();
-  const { brands, products } = useContext(ThemeContext);
+  const [brandProducts, setBrandProducts] = useState([]);
 
-  const matchBrand = brands.find((brand) => brand._id === brandId);
-  const matchProducts = products.filter((product) => product.brand === brandId);
-  console.log(matchProducts);
+  const { brandId } = useParams();
+  const brand = useLoaderData();
+
+  useEffect(() => {
+    fetch(`https://techzoid-server.vercel.app/products/${brandId}`)
+      .then((res) => res.json())
+      .then((data) => setBrandProducts(data));
+  }, [brandId]);
+
   return (
     <div className="max-w-screen-2xl min-h-screen mx-auto px-5 py-6 lg:py-16">
       <h1>
         ProductsArchive for <b>{brandId}</b>
       </h1>
       <figure>
-        <img src={matchBrand.bannerImages[0]} alt="" />
+        <img src={brand.bannerImages[0]} alt="" />
       </figure>
 
       <h2>All Products</h2>
       <ul>
-        {matchProducts.map((product) => (
+        {brandProducts.map((product) => (
           <li key={product._id}>{product.name}</li>
         ))}
       </ul>

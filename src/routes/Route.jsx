@@ -23,6 +23,8 @@ const router = createBrowserRouter([
       {
         path: "/products/:brandId",
         element: <ProductsArchive></ProductsArchive>,
+        loader: ({ params }) =>
+          fetch(`https://techzoid-server.vercel.app/brands/${params.brandId}`),
       },
       {
         path: "/addproduct",
