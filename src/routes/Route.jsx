@@ -9,6 +9,7 @@ import Registration from "../pages/Registration/Registration";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProduct from "../pages/Products/UpdateProduct";
 import Error from "../pages/Shared/Error";
+import ProductDetails from "../pages/Shared/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <UpdateProduct></UpdateProduct>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/product/:id",
+        element: (
+          <PrivateRoute>
+            <ProductDetails></ProductDetails>
           </PrivateRoute>
         ),
       },

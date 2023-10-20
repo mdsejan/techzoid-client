@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const HomeProductCard = ({ product }) => {
-  const { name, image, brand, category, price, rating } = product;
+  const { _id, name, image, brand, category, price, rating } = product;
   const [brandinfo, setBrand] = useState([]);
 
   useEffect(() => {
@@ -43,9 +44,11 @@ const HomeProductCard = ({ product }) => {
         </div>
 
         <div className="flex mt-5">
-          <button className="px-3 py-1 mr-5 rounded-sm bg-[#e7b642] hover:bg-[#ca9a2a] text-white">
-            Details
-          </button>
+          <Link to={`/product/${_id}`}>
+            <button className="px-3 py-1 mr-5 rounded-sm bg-[#e7b642] hover:bg-[#ca9a2a] text-white">
+              Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>

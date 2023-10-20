@@ -45,9 +45,11 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className="flex mt-5">
-          <button className="px-4 py-2 mr-5 rounded-sm bg-[#e7b642] hover:bg-[#ca9a2a] text-white">
-            Details
-          </button>
+          <Link to={`/product/${_id}`}>
+            <button className="px-4 py-2 mr-5 rounded-sm bg-[#e7b642] hover:bg-[#ca9a2a] text-white">
+              Details
+            </button>
+          </Link>
           <Link to={`/updateproduct/${_id}`}>
             <button className="px-4 py-2 rounded-sm border border-[#F7C54C] hover:bg-[#ca9a2a] hover:text-white">
               Update
