@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import Rating from "react-rating";
 import { Link } from "react-router-dom";
+import { FaStar, FaRegStar } from "react-icons/fa6";
 
 const ProductCard = ({ product }) => {
   const { _id, name, image, brand, category, price, rating } = product;
@@ -21,9 +23,9 @@ const ProductCard = ({ product }) => {
           className="rounded-xl w-full h-full object-cover"
         />
       </figure>
-      <div className="card-body text-center">
+      <div className="card-body justify-between text-center">
         <div>
-          <h1 className="card-title">
+          <h1 className="card-title justify-between">
             {name}
             <div className="badge bg-[#FCE9BC] text-black">{category}</div>
           </h1>
@@ -31,16 +33,20 @@ const ProductCard = ({ product }) => {
 
         <div className="text-left">
           <p className="text-lg">
-            <span className="font-semibold text-stone-500">Brand:</span>
+            <span className="font-semibold text-stone-500">Brand: &nbsp;</span>
             {brandinfo.name}
           </p>
           <p className="text-lg">
-            <span className="font-semibold text-stone-500">Price:</span> $
+            <span className="font-semibold text-stone-500">Price: &nbsp;</span>$
             {price}
           </p>
-          <p className="text-lg">
-            <span className="font-semibold text-stone-500">Rating:</span>
-            {rating}
+          <p className="text-lg mt-4">
+            <Rating
+              initialRating={rating}
+              readonly
+              emptySymbol={<FaRegStar className="text-red-400"></FaRegStar>}
+              fullSymbol={<FaStar className="text-red-400"></FaStar>}
+            />
           </p>
         </div>
 

@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { FaRegStar, FaStar } from "react-icons/fa6";
+import Rating from "react-rating";
 import { Link } from "react-router-dom";
 
 const HomeProductCard = ({ product }) => {
@@ -20,28 +22,26 @@ const HomeProductCard = ({ product }) => {
           className="rounded-xl w-full h-full object-cover"
         />
       </figure>
-      <div className="card-body text-center">
-        <div>
-          <h1 className="card-title">
-            {name}
-            <div className="badge bg-[#FCE9BC] text-black">{category}</div>
-          </h1>
-        </div>
-
-        <div className="text-left">
-          <p className="text-lg">
-            <span className="font-semibold text-stone-500">Brand:</span>
-            {brandinfo.name}
-          </p>
-          <p className="text-lg">
-            <span className="font-semibold text-stone-500">Price:</span> $
-            {price}
-          </p>
-          <p className="text-lg">
-            <span className="font-semibold text-stone-500">Rating:</span>
-            {rating}
-          </p>
-        </div>
+      <div className="card-body">
+        <h1 className="card-title mb-4">
+          {name}
+          <div className="badge bg-[#FCE9BC] text-black">{category}</div>
+        </h1>
+        <p className="text-lg">
+          <span className="font-semibold text-stone-500">Brand:</span>
+          {brandinfo.name}
+        </p>
+        <p className="text-lg">
+          <span className="font-semibold text-stone-500">Price:</span> ${price}
+        </p>
+        <p className="text-lg">
+          <Rating
+            initialRating={rating}
+            readonly
+            emptySymbol={<FaRegStar className="text-red-400"></FaRegStar>}
+            fullSymbol={<FaStar className="text-red-400"></FaStar>}
+          />
+        </p>
 
         <div className="flex mt-5">
           <Link to={`/product/${_id}`}>

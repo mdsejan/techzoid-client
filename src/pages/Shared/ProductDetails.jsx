@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { FaStar, FaRegStar } from "react-icons/fa6";
+import Rating from "react-rating";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState([]);
   const { id } = useParams();
 
-  const { image, name, price, shortDescription } = product || {};
+  const { image, rating, brand, category, name, price, shortDescription } =
+    product || {};
   console.log(product);
 
   useEffect(() => {
@@ -13,6 +16,15 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [id]);
+
+  const [brandinfo, setBrand] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://techzoid-server.vercel.app/brands/${brand}`)
+      .then((res) => res.json())
+      .then((data) => setBrand(data));
+  }, [brand]);
+
   return (
     <div className="max-w-screen-lg mx-auto px-5 py-6 lg:py-16">
       <div className="w-full max-w-4xl bg-white p-4 md:p-8 rounded-lg border md:flex">
@@ -25,9 +37,26 @@ const ProductDetails = () => {
         </div>
 
         <div className="md:w-1/2 mt-4 py-6 md:mt-0 md:pl-6">
-          <h2 className="text-3xl ">{name}</h2>
+          <h2 className="text-3xl flex justify-between items-center">
+            {name}
+            <div className="px-6 py-[1px] rounded-full bg-[#FCE9BC] text-base text-black">
+              {category}
+            </div>
+          </h2>
+          <p className="text-lg mt-4">
+            <Rating
+              initialRating={rating}
+              readonly
+              emptySymbol={<FaRegStar className="text-red-400"></FaRegStar>}
+              fullSymbol={<FaStar className="text-red-400"></FaStar>}
+            />
+          </p>
           <p className="text-red-700 text-3xl font-semibold my-7">${price}</p>
-          <p className="text-gray-700 mt-12">{shortDescription}</p>
+          <p className="text-lg mt-12 mb-4">
+            <span className="font-semibold text-stone-700">Brand: &nbsp;</span>
+            {brandinfo.name}
+          </p>
+          <p className="text-gray-700">{shortDescription}</p>
           <button className="bg-black text-white py-2 px-4 mt-8 rounded hover:bg-gray-800 focus:outline-none focus:ring focus:border-blue-300">
             Add to Cart
           </button>
