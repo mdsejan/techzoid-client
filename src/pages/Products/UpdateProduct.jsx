@@ -41,7 +41,7 @@ const UpdateProduct = () => {
       shortDescription,
     };
 
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://techzoid-server.vercel.app/products/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -8,11 +8,12 @@ import ProductsArchive from "../pages/Products/ProductsArchive";
 import Registration from "../pages/Registration/Registration";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProduct from "../pages/Products/UpdateProduct";
+import Error from "../pages/Shared/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: <div>Error 404</div>,
+    errorElement: <Error></Error>,
     element: <MainLayouts></MainLayouts>,
     children: [
       {
