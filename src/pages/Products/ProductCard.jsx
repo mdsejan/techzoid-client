@@ -1,11 +1,19 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
 const ProductCard = ({ product }) => {
-  const { name, image, category, price, rating } = product;
-  console.log(image);
+  const { name, image, brand, category, price, rating } = product;
+  const [brandinfo, setBrand] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://techzoid-server.vercel.app/brands/${brand}`)
+      .then((res) => res.json())
+      .then((data) => setBrand(data));
+  }, [brand]);
+
   return (
     <div className="card bg-base-100 shadow-sm border">
-      <figure className="px-10 pt-10 h-40">
+      <figure className="px-5 pt-5 h-72">
         <img
           src={image}
           alt={name}
@@ -14,13 +22,16 @@ const ProductCard = ({ product }) => {
       </figure>
       <div className="card-body text-center">
         <div>
-          <h1 className="card-title">{name}</h1>
+          <h1 className="card-title">
+            {name}
+            <div className="badge bg-[#FCE9BC] text-black">{category}</div>
+          </h1>
         </div>
 
         <div className="text-left">
           <p className="text-lg">
-            <span className="font-semibold text-stone-500">Category:</span>{" "}
-            {category}
+            <span className="font-semibold text-stone-500">Brand:</span>{" "}
+            {brandinfo.name}
           </p>
           <p className="text-lg">
             <span className="font-semibold text-stone-500">Price:</span> $

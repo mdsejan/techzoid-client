@@ -113,25 +113,30 @@ const AddProduct = () => {
             </div>
             <div className="w-full md:w-1/2 px-4">
               <label className="block  text-left text-gray-600 font-medium text-md mb-2 mt-8">
+                Rating
+              </label>
+              <select
+                name="rating"
+                className=" border border-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full p-2.5"
+                required
+              >
+                <option value="">Choose Rating</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div className="w-full md:w-1/2 px-4">
+              <label className="block  text-left text-gray-600 font-medium text-md mb-2 mt-8">
                 Price
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="price"
-                type="text"
+                type="number"
                 placeholder="Price"
-              />
-            </div>
-            <div className="w-full md:w-1/2 px-4">
-              <label className="block  text-left text-gray-600 font-medium text-md mb-2 mt-8">
-                Rating
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                name="rating"
-                type="text"
-                placeholder="Rating"
-                required
               />
             </div>
             <div className="w-full px-4">
