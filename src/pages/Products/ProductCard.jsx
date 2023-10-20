@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { name, image, brand, category, price, rating } = product;
+  const { _id, name, image, brand, category, price, rating } = product;
   const [brandinfo, setBrand] = useState([]);
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const ProductCard = ({ product }) => {
 
         <div className="text-left">
           <p className="text-lg">
-            <span className="font-semibold text-stone-500">Brand:</span>{" "}
+            <span className="font-semibold text-stone-500">Brand:</span>
             {brandinfo.name}
           </p>
           <p className="text-lg">
@@ -38,7 +39,7 @@ const ProductCard = ({ product }) => {
             {price}
           </p>
           <p className="text-lg">
-            <span className="font-semibold text-stone-500">Rating:</span>{" "}
+            <span className="font-semibold text-stone-500">Rating:</span>
             {rating}
           </p>
         </div>
@@ -47,9 +48,11 @@ const ProductCard = ({ product }) => {
           <button className="px-4 py-2 mr-5 rounded-sm bg-[#e7b642] hover:bg-[#ca9a2a] text-white">
             Details
           </button>
-          <button className="px-4 py-2 rounded-sm border border-[#F7C54C] hover:bg-[#ca9a2a] hover:text-white">
-            Update
-          </button>
+          <Link to={`/updateproduct/${_id}`}>
+            <button className="px-4 py-2 rounded-sm border border-[#F7C54C] hover:bg-[#ca9a2a] hover:text-white">
+              Update
+            </button>
+          </Link>
         </div>
       </div>
     </div>
