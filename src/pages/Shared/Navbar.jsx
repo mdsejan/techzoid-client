@@ -160,7 +160,7 @@ const Navbar = () => {
             ) : (
               <Link
                 to="/login"
-                className="px-4 py-2 border text-[#F7C54C] border-[#F7C54C] hover:bg-[#F7C54C] hover:text-white"
+                className="px-4 py-1 border text-[#F7C54C] border-[#F7C54C] hover:bg-[#F7C54C] hover:text-white"
               >
                 Login
               </Link>

@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -19,7 +20,10 @@ const ThemeProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(user);
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
   const signInUser = (email, password) => {
     setLoading(true);
@@ -69,6 +73,7 @@ const ThemeProvider = ({ children }) => {
     setLoading,
     user,
     logOut,
+    createUser,
   };
 
   return (

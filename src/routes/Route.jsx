@@ -10,11 +10,7 @@ import Registration from "../pages/Registration/Registration";
 const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: (
-      <div>
-        <h2>Error 404</h2>
-      </div>
-    ),
+    errorElement: <div>Error 404</div>,
     element: <MainLayouts></MainLayouts>,
     children: [
       {
