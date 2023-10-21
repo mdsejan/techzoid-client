@@ -96,7 +96,7 @@ const ProductDetails = () => {
           <p className="text-gray-700">{shortDescription}</p>
           <button
             onClick={handleAddToCart}
-            className="bg-black text-white py-2 px-4 mt-8 rounded hover:bg-gray-800 focus:outline-none focus:ring focus:border-blue-300"
+            className="bg-black text-white py-2 px-4 mt-8 rounded hover:bg-gray-800"
           >
             Add to Cart
           </button>

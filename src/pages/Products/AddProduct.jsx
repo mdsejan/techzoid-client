@@ -109,6 +109,7 @@ const AddProduct = () => {
                 <option value="Phone">Phone</option>
                 <option value="Laptop">Laptop</option>
                 <option value="Audio">Audio</option>
+                <option value="Audio">Watch</option>
               </select>
             </div>
             <div className="w-full md:w-1/2 px-4">
