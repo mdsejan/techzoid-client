@@ -11,6 +11,7 @@ import UpdateProduct from "../pages/Products/UpdateProduct";
 import Error from "../pages/Shared/Error";
 import ProductDetails from "../pages/Shared/ProductDetails";
 import TermsOfUse from "../pages/Legal/TermsOfUse";
+import PrivacyPolicy from "../pages/Legal/PrivacyPolicy";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "/termsofuse",
         element: <TermsOfUse></TermsOfUse>,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
       },
     ],
   },
