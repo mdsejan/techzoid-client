@@ -1,7 +1,7 @@
 const TermsOfUse = () => {
   return (
     <div className="max-w-screen-lg min-h-screen mx-auto py-16">
-      <div className="container mx-auto bg-white p-8 rounded ">
+      <div className="container mx-auto p-8 rounded ">
         <h1 className="text-2xl font-semibold mb-6">Terms of Use</h1>
 
         <h2 className="text-lg font-semibold mb-4">1. Acceptance of Terms</h2>
