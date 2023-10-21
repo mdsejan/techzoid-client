@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateProduct from "../pages/Products/UpdateProduct";
 import Error from "../pages/Shared/Error";
 import ProductDetails from "../pages/Shared/ProductDetails";
+import TermsOfUse from "../pages/Legal/TermsOfUse";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Registration></Registration>,
+      },
+      {
+        path: "/termsofuse",
+        element: <TermsOfUse></TermsOfUse>,
       },
     ],
   },

@@ -6,6 +6,9 @@ import { useParams } from "react-router-dom";
 const UpdateProduct = () => {
   const { brands } = useContext(ThemeContext);
   const [productinfo, setProductInfo] = useState([]);
+  const [brandinfo, setBrand] = useState([]);
+  const { name, image, price, shortDescription, brand, category, rating } =
+    productinfo;
 
   const { id } = useParams();
 
@@ -15,10 +18,11 @@ const UpdateProduct = () => {
       .then((data) => setProductInfo(data));
   }, [id]);
 
-  const { name, image, price, shortDescription, brand, category, rating } =
-    productinfo;
-
-  console.log(name);
+  useEffect(() => {
+    fetch(`https://techzoid-server.vercel.app/brands/${brand}`)
+      .then((res) => res.json())
+      .then((data) => setBrand(data));
+  }, [brand]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -101,10 +105,9 @@ const UpdateProduct = () => {
               <select
                 name="brand"
                 className="border border-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full p-2.5 "
-                defaultValue={brand}
                 required
               >
-                <option value="">Choose a brand</option>
+                <option value={brand}>{brandinfo.name}</option>
                 {brands.map((brand) => (
                   <option key={brand._id} value={brand._id}>
                     {brand.name}
@@ -119,10 +122,9 @@ const UpdateProduct = () => {
               <select
                 name="category"
                 className=" border border-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full p-2.5"
-                defaultValue={category}
                 required
               >
-                <option value="">Choose a category</option>
+                <option value={category}>{category}</option>
                 <option value="Phone">Phone</option>
                 <option value="Laptop">Laptop</option>
                 <option value="Audio">Audio</option>
@@ -138,7 +140,7 @@ const UpdateProduct = () => {
                 defaultValue={rating}
                 required
               >
-                <option value="">Choose Rating</option>
+                <option value={rating}>{rating}</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
