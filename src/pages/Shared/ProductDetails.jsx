@@ -29,8 +29,17 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     const productId = id;
+    const productImage = image;
+    const productName = name;
+    const productPrice = price;
     const userEmail = user.email;
-    const cartDetails = { productId, userEmail };
+    const cartDetails = {
+      productId,
+      userEmail,
+      productImage,
+      productName,
+      productPrice,
+    };
 
     fetch("https://techzoid-server.vercel.app/mycart", {
       method: "POST",
