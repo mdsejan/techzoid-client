@@ -58,7 +58,7 @@ const Registration = () => {
           icon: "success",
           title: "Success! Your registration is complete. Please Login.",
           showConfirmButton: false,
-          timer: 3500,
+          timer: 2500,
         });
 
         e.target.reset();
@@ -72,7 +72,7 @@ const Registration = () => {
           icon: "error",
           title: error.message,
           showConfirmButton: false,
-          timer: 3500,
+          timer: 2500,
         });
       });
   };

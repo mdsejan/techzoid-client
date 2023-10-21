@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaStar, FaRegStar } from "react-icons/fa6";
 import Rating from "react-rating";
+import { ThemeContext } from "../../provider/ThemeProvider";
+import Swal from "sweetalert2";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState([]);
+  const [brandinfo, setBrand] = useState([]);
   const { id } = useParams();
+
+  const { user } = useContext(ThemeContext);
 
   const { image, rating, brand, category, name, price, shortDescription } =
     product || {};
-  console.log(product);
 
   useEffect(() => {
     fetch(`https://techzoid-server.vercel.app/product/${id}`)
@@ -17,13 +21,37 @@ const ProductDetails = () => {
       .then((data) => setProduct(data));
   }, [id]);
 
-  const [brandinfo, setBrand] = useState([]);
-
   useEffect(() => {
     fetch(`https://techzoid-server.vercel.app/brands/${brand}`)
       .then((res) => res.json())
       .then((data) => setBrand(data));
   }, [brand]);
+
+  const handleAddToCart = () => {
+    const productId = id;
+    const userEmail = user.email;
+    const cartDetails = { productId, userEmail };
+
+    fetch("https://techzoid-server.vercel.app/mycart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(cartDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Product Add To Cart Successfully",
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        }
+      });
+  };
 
   return (
     <div className="max-w-screen-lg mx-auto px-5 py-6 lg:py-16">
@@ -57,7 +85,10 @@ const ProductDetails = () => {
             {brandinfo.name}
           </p>
           <p className="text-gray-700">{shortDescription}</p>
-          <button className="bg-black text-white py-2 px-4 mt-8 rounded hover:bg-gray-800 focus:outline-none focus:ring focus:border-blue-300">
+          <button
+            onClick={handleAddToCart}
+            className="bg-black text-white py-2 px-4 mt-8 rounded hover:bg-gray-800 focus:outline-none focus:ring focus:border-blue-300"
+          >
             Add to Cart
           </button>
         </div>

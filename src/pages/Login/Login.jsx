@@ -27,7 +27,7 @@ const Login = () => {
           icon: "success",
           title: "Sign-in Successful! Welcome back!",
           showConfirmButton: false,
-          timer: 3500,
+          timer: 2500,
         });
 
         e.target.reset();
@@ -40,7 +40,7 @@ const Login = () => {
           icon: "error",
           title: error.message,
           showConfirmButton: false,
-          timer: 3500,
+          timer: 2500,
         });
       });
   };
@@ -54,7 +54,7 @@ const Login = () => {
           icon: "success",
           title: "Sign-in Successful! Welcome back!",
           showConfirmButton: false,
-          timer: 3500,
+          timer: 2500,
         });
         navigate(location?.state ? location.state : "/");
       })
@@ -65,7 +65,7 @@ const Login = () => {
           icon: "error",
           title: error.message,
           showConfirmButton: false,
-          timer: 3500,
+          timer: 2500,
         });
       });
   };

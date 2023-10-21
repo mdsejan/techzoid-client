@@ -41,7 +41,7 @@ const AddProduct = () => {
             icon: "success",
             title: "Product Added Successfully",
             showConfirmButton: false,
-            timer: 3500,
+            timer: 2500,
           });
         }
         e.target.reset();

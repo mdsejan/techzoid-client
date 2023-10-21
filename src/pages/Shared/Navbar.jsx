@@ -44,19 +44,16 @@ const Navbar = () => {
           My Cart
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/login" className="mr-2">
-          Login
-        </NavLink>
-      </li>
 
-      {/* {!user ? (
-            <li>
-              <NavLink to="/register">Register</NavLink>
-            </li>
-          ) : (
-            " "
-          )} */}
+      {!user ? (
+        <li>
+          <NavLink to="/login" className="mr-2">
+            Login
+          </NavLink>
+        </li>
+      ) : (
+        " "
+      )}
     </>
   );
   return (
@@ -150,7 +147,9 @@ const Navbar = () => {
                   className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40"
                 >
                   <li>
-                    <h2 className="mr-4 md:hidden">Name</h2>
+                    <h2 className="mr-4 md:hidden">
+                      {user ? user.displayName : ""}
+                    </h2>
                   </li>
                   <li>
                     <button onClick={handleLogOut}>Logout</button>
