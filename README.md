@@ -23,3 +23,7 @@ Welcome to TechZoid Electronic Shop, an online store built using React with Reac
 ## Live Site
 
 Check out the live site [here](https://techzoid-client.netlify.app/).
+
+## Server-side Repository
+
+The server-side repository for SwapGardens can be found [here](https://github.com/mdsejan/techzoid-server).
